@@ -3,33 +3,97 @@ body {
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom, #f7d89c, #e94b6b);
-  overflow: hidden; /* Prevent the fireworks from overflowing */
 }
 
 .container {
-  /* The container styles remain unchanged */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: transparent; /* Remove white background */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two-column layout */
+  grid-gap: 20px; /* Add some space between columns */
+}
+
+.upper-middle {
+  grid-column: 1 / span 2; /* Span both columns */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.left,
+.right,
+.bottom-middle {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.contact {
+  margin-top: 20px;
+}
+
+.contact a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #007bff;
+  padding: 8px 12px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  width: 150px;
+  text-align: center;
+}
+
+.contact i {
+  margin-right: 5px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+p {
+  margin: 5px 0;
 }
 
 /* Fireworks styles */
 .fireworks {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
   pointer-events: none;
+  animation: showFireworks 10s infinite;
+  background-image: url('https://www.transparenttextures.com/patterns/foggy-birds.png');
 }
 
 .firework {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  opacity: 0;
-  transform-origin: center;
-  animation: explode 0.7s ease forwards;
+  background-color: #fff;
   pointer-events: none;
+  animation: explode 2s ease-out;
+}
+
+@keyframes showFireworks {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
 }
 
 @keyframes explode {
@@ -38,11 +102,21 @@ body {
     opacity: 1;
   }
   100% {
-    transform: scale(20);
+    transform: scale(5);
     opacity: 0;
   }
 }
 
+/* Adjust the styles for smaller screens */
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr; /* One-column layout for smaller screens */
+  }
+
+  .upper-middle {
+    grid-column: 1; /* Span only one column */
+  }
+}
 
 
 
